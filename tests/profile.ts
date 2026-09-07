@@ -1,0 +1,3 @@
+import {createState,SYSTEMS} from '../src/sim/state';import {launch} from '../src/sim/mission';import {tick} from '../src/sim/physics';import {navigation} from '../src/sim/navigation';
+const s=createState();SYSTEMS.forEach(k=>s.systems[k]=true);s.engineArmed=s.launchArmed=true;launch(s);
+for(let i=0;i<60000;i++){tick(s);if(i%1800===0){const n=navigation(s);console.log(JSON.stringify({t:s.time.toFixed(0),alt:(n.altitude/1000).toFixed(1),v:n.speed.toFixed(0),vr:n.vertical.toFixed(0),vh:n.horizontal.toFixed(0),pitch:s.pitch.toFixed(1),apo:(n.apoapsis/1000).toFixed(1),peri:(n.periapsis/1000).toFixed(1),fuel:s.fuel.map(x=>x.toFixed(0)),throttle:s.throttle.toFixed(2),phase:s.phase}));}if(s.orbitAchieved)break;}
