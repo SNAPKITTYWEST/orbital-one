@@ -1,0 +1,41 @@
+{
+  "name": "orbital-one",
+  "version": "1.0.0",
+  "description": "Browser spacecraft simulator and headless flight-model SDK",
+  "type": "module",
+  "license": "MIT",
+  "author": "Ahmad Ali Parr, Jessica L. Williams (SNAPKITTYWEST)",
+  "keywords": ["spacecraft", "simulator", "orbital-mechanics", "flight-model", "sdk", "three.js"],
+  "exports": {
+    "./state":      "./src/sim/state.ts",
+    "./physics":    "./src/sim/physics.ts",
+    "./guidance":   "./src/sim/guidance.ts",
+    "./navigation": "./src/sim/navigation.ts",
+    "./propulsion": "./src/sim/propulsion.ts",
+    "./mission":    "./src/sim/mission.ts",
+    "./telemetry":  "./src/sim/telemetry.ts",
+    "./math":       "./src/sim/math.ts"
+  },
+  "files": [
+    "src/sim/",
+    "LICENSE",
+    "README.md"
+  ],
+  "scripts": {
+    "dev": "vite --host 127.0.0.1",
+    "build": "tsc --noEmit && vite build",
+    "preview": "vite preview --host 127.0.0.1",
+    "test": "tsx --test tests/*.test.ts",
+    "test:browser": "playwright test"
+  },
+  "dependencies": {
+    "three": "^0.180.0"
+  },
+  "devDependencies": {
+    "@types/three": "^0.180.0",
+    "typescript": "^5.9.2",
+    "vite": "^7.1.5",
+    "tsx": "^4.20.5",
+    "@playwright/test": "^1.55.0"
+  }
+}
