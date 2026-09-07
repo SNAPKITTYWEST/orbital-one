@@ -1,0 +1,11 @@
+export type V3 = [number,number,number];
+export const add=(a:V3,b:V3):V3=>[a[0]+b[0],a[1]+b[1],a[2]+b[2]];
+export const mul=(a:V3,n:number):V3=>[a[0]*n,a[1]*n,a[2]*n];
+export const dot=(a:V3,b:V3)=>a[0]*b[0]+a[1]*b[1]+a[2]*b[2];
+export const cross=(a:V3,b:V3):V3=>[a[1]*b[2]-a[2]*b[1],a[2]*b[0]-a[0]*b[2],a[0]*b[1]-a[1]*b[0]];
+export const len=(a:V3)=>Math.hypot(...a);
+export const unit=(a:V3):V3=>mul(a,1/(len(a)||1));
+export const clamp=(x:number,a:number,b:number)=>Math.max(a,Math.min(b,x));
+export const lerp=(a:number,b:number,t:number)=>a+(b-a)*t;
+export const RAD=Math.PI/180;
+export const R=6371000, MU=3.986004418e14, G0=9.80665, STEP=1/60;
